@@ -1,3 +1,11 @@
+/************************************************************************************
+ *                                                                                  *
+ *  @ Ankit Dimri                                                                   *
+ *  A IPC client which sends request using message queue to service the req in      *
+ *  priority                                                                        *
+ *                                                                                  *
+ ************************************************************************************/
+
 /* Client1 of server Misty */
 
 #include <iostream>
