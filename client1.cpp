@@ -15,11 +15,13 @@
 #include <cstring>
 
  struct message {
+
    long mtype;
    char cmd [200];
    char email [100];
    char address [100];
- }msg_clear = {0, '\0', '\0', '\0'};
+
+ } msg_clear = {0, '\0', '\0', '\0'};
 
  int main(int argc, char const *argv[]) {
 
@@ -88,5 +90,4 @@
 
    }
 
-   return 0;
  }
