@@ -2,7 +2,7 @@
  *                                                                                  *
  *  @ Ankit Dimri                                                                   *
  *  A IPC server client using message queue to service the req in priority          *
- *                                                                                  *                
+ *                                                                                  *
  ************************************************************************************/
 
 /* Server Misty */
@@ -35,14 +35,7 @@
    key = ftok ("Misty", 'X');
    msgid = msgget (key, 0600 | IPC_CREAT);
 
-   //if (msgrcv (msgid, &msg, sizeof (message), 1, 0) == -1 )
-   //  std::cout << "\nno message" << '\n';
-
    while (1) {
-
-     /*if (msgrcv (msgid, &msg, sizeof (message), 1, 0) == -1 )
-      std::cout << "\nno message" << '\n';
-      std::cout << msg.cmd << '\n';*/
 
       sleep (60);  // sleep for 10 seconds
 
@@ -77,10 +70,6 @@
 
    }
 
-   /* msgrcv (msgid, &msg, 100, 0, 0);
-   std::cout << "\n\t message type : " << msg.mtype;
-   std::cout << "\n\t message : " << msg.msg << std::endl; */
-
    msgctl (msgid, IPC_RMID, NULL);
 
    return 0;
@@ -89,26 +78,20 @@
  void service1 (message &msg) {
 
      system (msg.cmd);
-     //const char* c = msg.cmd;
-     //std::cout << "inside it" << '\n';
-     //execl (c, NULL);
-     //std::cout << "Inside it" << '\n';
 
  }
 
  void service2 (message &msg) {
 
      char comm [200] = "echo \"  PFA  \" | mutt -s ";
-     //std::cout << msg.email << '\n';
      strcat (comm, msg.cmd);
      strcat (comm, " ");
      strcat (comm, msg.email);
      strcat (comm, " -a ");
      strcat (comm, msg.address);
-     //std::cout << comm << '\n';
-     //std::cout << msg.address << '\n';
+
      system (comm);
-     //execv (comm, NULL);
+
 
  }
 
@@ -118,7 +101,6 @@
    strcat (cmm, msg.address);
    command = cmm;
    system (command);
-   //execv (command, NULL);
 
  }
 
@@ -128,6 +110,5 @@
    strcat (cmm, msg.address);
    command = cmm;
    system (command);
-   //execv (command, NULL);
 
  }
