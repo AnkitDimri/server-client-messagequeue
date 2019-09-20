@@ -14,10 +14,12 @@
 #include <cstring>
 
  struct message {
+
    long mtype;
    char cmd [200];
    char email [100];
    char address [100];
+
  } msg_clear = {0, '\0', '\0', '\0'};
 
  void service1 (message&);
@@ -70,9 +72,8 @@
 
    }
 
-   msgctl (msgid, IPC_RMID, NULL);
+//  msgctl (msgid, IPC_RMID, NULL);
 
-   return 0;
  }
 
  void service1 (message &msg) {
@@ -89,7 +90,6 @@
      strcat (comm, msg.email);
      strcat (comm, " -a ");
      strcat (comm, msg.address);
-
      system (comm);
 
 
