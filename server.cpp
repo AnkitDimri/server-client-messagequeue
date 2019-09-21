@@ -9,19 +9,22 @@
 
 #include <iostream>
 #include <unistd.h>
-#include <sys/msg.h>
+#include <sys/msg.h>  // for message queues
 #include <sys/types.h>
 #include <cstring>
 
+ // Message queue structure
  struct message {
 
-   long mtype;
+   /* Priority based on message type */
+   long mtype;  // message type
    char cmd [200];
    char email [100];
    char address [100];
 
- } msg_clear = {0, '\0', '\0', '\0'};
+ } msg_clear = {0, '\0', '\0', '\0'}; // clear buffer
 
+ /* services serviced by the server Misty */
  void service1 (message&);
  void service2 (message&);
  void service3 (message&);
@@ -32,24 +35,32 @@
    message msg;
    msqid_ds buf;
    int msgid, reqs;
-   key_t key;
+   key_t key;  // messgae queue key
 
-   key = ftok ("Misty", 'X');
-   msgid = msgget (key, 0600 | IPC_CREAT);
+   key = ftok ("Misty", 'X');  // Generate key for message queue
+   /*
+    * use same parameters for key generation to send messages in queue to be
+    * serviced by the Server
+    */
+   msgid = msgget (key, 0600 | IPC_CREAT); // create message queue
 
+   /* Infinite server loop */
    while (1) {
 
       sleep (60);  // sleep for 10 seconds
 
-      msgctl (msgid, IPC_STAT, &buf);
-      reqs = (int)(buf.msg_qnum);
+      /* get queue status */
+      msgctl (msgid, IPC_STAT, &buf); // message control
+      reqs = (int)(buf.msg_qnum); // number of messages in queue currently
 
       for (int i = 0; i < reqs; i++) {
 
-        msgrcv (msgid, &msg, sizeof (message), -4, 0);
+        /* Service req according to priority */
+        msgrcv (msgid, &msg, sizeof (message), -4, 0); // -4 is a flag
 
+        /* switch to req */
         switch (msg.mtype) {
-
+        /* Parallel processing */
           case 1 : if (!fork ())
                     service1 (msg);
                    break;
@@ -66,7 +77,7 @@
 
         }
 
-        msg = msg_clear;
+        msg = msg_clear; // clear message buffer
 
       }
 
