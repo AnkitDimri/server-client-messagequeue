@@ -34,7 +34,7 @@
    key = ftok ("Misty", 'X');  // Genrate the key using same parmeters as in server
    msgid = msgget (key, 0400); // get the messagequeue ID and set permissions
 
-   /* Infinite server loop */
+   /* Infinite client loop */
    while (1) {
 
      msg = msg_clear; // clear message buffer
