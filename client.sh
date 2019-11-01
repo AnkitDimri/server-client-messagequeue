@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-g++ client1.cpp -o c1
+g++ client.cpp -o c1
 ./c1
