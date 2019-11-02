@@ -1,6 +1,6 @@
 /************************************************************************************
  *                                                                                  *
- *  @author: Ankit Dimri                                                                   *
+ *  @author: Ankit Dimri                                                            *
  *  A IPC server client using message queue to service the req in priority          *
  *                                                                                  *
  ************************************************************************************/
