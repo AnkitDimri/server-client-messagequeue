@@ -2,6 +2,8 @@
 
 # @author: Ankit Dimri
 
+# Compile server.cpp and create a server object
+
 echo
 echo "Compiling server.cpp ..."
 echo
@@ -10,4 +12,5 @@ echo "compiled!"
 echo "starting server..."
 echo
 
+# Start server
 ./server
