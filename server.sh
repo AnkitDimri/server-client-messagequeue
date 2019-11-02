@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# @author: Ankit Dimri
+
 echo
 echo "Compiling server.cpp ..."
 echo
