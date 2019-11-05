@@ -18,5 +18,9 @@ do
   count=`expr $count + 1`
 done
 
+count=`expr $count + 1`
+
+echo "Starting client $count ...
+
 echo "starting client..."
 ./clnt
