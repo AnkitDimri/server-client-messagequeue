@@ -12,7 +12,7 @@ echo "compiled ..."
 # run the client
 
 count=0
-ps_running=$(pidof client)
+ps_running=$(pidof clnt)
 for pids in $ps_running
 do
   count=`expr $count + 1`
