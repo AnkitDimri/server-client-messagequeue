@@ -6,7 +6,7 @@
  *                                                                                  *
  ************************************************************************************/
 
-/* Client1 of server Misty */
+/* Client of server Misty */
 
 #include <iostream>
 #include <cstdio>
