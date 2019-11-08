@@ -11,6 +11,9 @@ g++ client.cpp -o clnt
 echo "compiled ..."
 # run the client
 
+# check for already running clients
+# and give apropriate number to the new client
+
 count=0
 ps_running=$(pidof clnt)
 for pids in $ps_running
